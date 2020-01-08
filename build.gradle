@@ -1,0 +1,91 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'simonas'
+version '0.0.1'
+
+sourceCompatibility = 1.8
+
+mainClassName = "app.Application"
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+sourceSets {
+    integrationTest {
+        java {
+            srcDir file('src/integration-test/java')
+            compileClasspath += main.output + test.output + configurations.testRuntime
+            runtimeClasspath += main.output + test.output + configurations.testRuntime
+        }
+    }
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version:'2.5.1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.5.1'
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
+    compile group: 'com.google.guava', name: 'guava', version: '28.1-jre'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+    compile group: 'com.zaxxer', name: 'HikariCP', version:'3.4.1'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
+    compile group: 'com.sparkjava', name: 'spark-core', version:'2.8.0'
+    compileOnly group: 'org.projectlombok', name:'lombok', version:'1.18.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    testCompile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.10'
+    testCompile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.10'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.7.4'
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.7.4'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'app.Application'
+    }
+}
+
+task fatJar(type: Jar, description: 'Create Jar with dependencies', group: 'distribution') {
+    manifest.from jar.manifest
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    libsDirName = "$projectDir/"
+    with jar
+}
+
+run {
+    if (System.getProperty("sparkPort")) systemProperty "sparkPort", System.getProperty("sparkPort")
+}
+
+test {
+    useJUnit()
+    maxHeapSize = '1G'
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task integrationTest(type: Test, description: 'Integration testing', group: 'verification') {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    include '**/FunctionalTest.*'
+    maxHeapSize = '1G'
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    if (System.getProperty("sparkPort")) systemProperty "sparkPort", System.getProperty("sparkPort")
+}
+
+check.dependsOn integrationTest
+integrationTest.mustRunAfter test

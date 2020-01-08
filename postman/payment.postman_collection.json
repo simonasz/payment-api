@@ -1,0 +1,1521 @@
+{
+  "info": {
+    "_postman_id": "57ff268d-d0b4-44f8-818e-a41b9ee28630",
+    "name": "Payment",
+    "description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health endpoint",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "23016f7e-c97f-4b14-b537-f55c4ec38e2e",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Health endpoint",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:20 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"OK\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get all customers",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "23016f7e-c97f-4b14-b537-f55c4ec38e2e",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/customer",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customer"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get all customers",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:22 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"updated\": 1578507389774,\n        \"created\": 1578507389774\n    }\n]"
+        },
+        {
+          "name": "Get all customers",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:22 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"updated\": 1578507389774,\n        \"created\": 1578507389774\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Create a new customer",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "bb2cf0b9-d2a6-444d-b87e-51ccdf35a2b4",
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.environment.set(\"cId\", jsonData.id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"firstName\": \"Jane\",\n\t\"lastName\": \"Doe\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/customer",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customer"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Create a new customer",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"firstName\": \"Jane\",\n\t\"lastName\": \"Doe\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/customer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:25 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 2,\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"updated\": 1578507985259,\n    \"created\": 1578507985259\n}"
+        },
+        {
+          "name": "Create a new customer",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"firstName\": \"Jane\",\n\t\"lastName\": \"Doe\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/customer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:25 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 2,\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"updated\": 1578507985259,\n    \"created\": 1578507985259\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get customer by id",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "b1112eb0-d606-4be5-8dd4-65ba5e74fdb5",
+            "exec": [
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/customer/{{cId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customer",
+            "{{cId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get customer by id",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customer/{{cId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer",
+                "{{cId}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:27 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 2,\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"updated\": 1578507985259,\n    \"created\": 1578507985259\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update customer by id",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"firstName\": \"Tom\",\n\t\"lastName\": \"Doe\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/customer/{{cId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customer",
+            "{{cId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Update customer by id",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"firstName\": \"Tom\",\n\t\"lastName\": \"Doe\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/customer/{{cId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer",
+                "{{cId}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:30 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 2,\n    \"firstName\": \"Tom\",\n    \"lastName\": \"Doe\",\n    \"updated\": 1578507990163,\n    \"created\": 1578507985259\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete customer by Id (not implemented)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"firstName\": \"Tom\",\n\t\"lastName\": \"Doe\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/customer/{{cId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customer",
+            "{{cId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete customer by Id (not implemented)",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"firstName\": \"Tom\",\n\t\"lastName\": \"Doe\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/customer/{{cId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer",
+                "{{cId}}"
+              ]
+            }
+          },
+          "status": "Not Implemented",
+          "code": 501,
+          "_postman_previewlanguage": "html",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:32 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/html;charset=utf-8"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\" : \"Not implemented\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get customer accounts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/customer/{{cId}}/account",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customer",
+            "{{cId}}",
+            "account"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get customer accounts",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customer/{{cId}}/account",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customer",
+                "{{cId}}",
+                "account"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:49 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 3,\n        \"customerId\": 2,\n        \"title\": \"Savings account main\",\n        \"balance\": 2500.58,\n        \"updated\": 1578508001114,\n        \"created\": 1578508001114\n    },\n    {\n        \"id\": 4,\n        \"customerId\": 2,\n        \"title\": \"Savings account secondary\",\n        \"balance\": 2500.58,\n        \"updated\": 1578508004381,\n        \"created\": 1578508004381\n    },\n    {\n        \"id\": 5,\n        \"customerId\": 2,\n        \"title\": \"Savings account secondary\",\n        \"balance\": 2500.58,\n        \"updated\": 1578508007083,\n        \"created\": 1578508007083\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get all accounts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/account",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "account"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get all accounts",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/account",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:53 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"customerId\": 1,\n        \"title\": \"Updated title for account\",\n        \"balance\": 2500.58,\n        \"updated\": 1578507593998,\n        \"created\": 1578507405382\n    },\n    {\n        \"id\": 2,\n        \"customerId\": 1,\n        \"title\": \"Savings account secondary\",\n        \"balance\": 2500.58,\n        \"updated\": 1578507408541,\n        \"created\": 1578507408541\n    },\n    {\n        \"id\": 3,\n        \"customerId\": 2,\n        \"title\": \"Savings account main\",\n        \"balance\": 2500.58,\n        \"updated\": 1578508001114,\n        \"created\": 1578508001114\n    },\n    {\n        \"id\": 4,\n        \"customerId\": 2,\n        \"title\": \"Savings account secondary\",\n        \"balance\": 2500.58,\n        \"updated\": 1578508004381,\n        \"created\": 1578508004381\n    },\n    {\n        \"id\": 5,\n        \"customerId\": 2,\n        \"title\": \"Savings account secondary\",\n        \"balance\": 2500.58,\n        \"updated\": 1578508007083,\n        \"created\": 1578508007083\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Create account",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a1199ab9-5571-44e1-9c15-033fcba45461",
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.environment.set(\"aId\", jsonData.id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account main\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/account",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "account"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Create account",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account main\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/account",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:27:00 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 6,\n    \"customerId\": 2,\n    \"title\": \"Savings account main\",\n    \"balance\": 2500.58,\n    \"updated\": 1578508020658,\n    \"created\": 1578508020658\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create account #2 (2nd account)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a1199ab9-5571-44e1-9c15-033fcba45461",
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.environment.set(\"aId2\", jsonData.id);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account secondary\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/account",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "account"
+          ]
+        },
+        "description": "Dublicated request to create second account"
+      },
+      "response": [
+        {
+          "name": "Create account #2 (2nd account)",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account secondary\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/account",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:47 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 5,\n    \"customerId\": 2,\n    \"title\": \"Savings account secondary\",\n    \"balance\": 2500.58,\n    \"updated\": 1578508007083,\n    \"created\": 1578508007083\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Account by ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a1199ab9-5571-44e1-9c15-033fcba45461",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account secondary\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/account/{{aId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "account",
+            "{{aId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Account by ID",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account secondary\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/account/{{aId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "{{aId}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:26:56 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 3,\n    \"customerId\": 2,\n    \"title\": \"Savings account main\",\n    \"balance\": 2500.58,\n    \"updated\": 1578508001114,\n    \"created\": 1578508001114\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update account by id",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"title\": \"Updated title for account\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/account/{{aId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "account",
+            "{{aId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Update account by id",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"title\": \"Updated title for account\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/account/{{aId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "{{aId}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:27:04 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 6,\n    \"customerId\": 2,\n    \"title\": \"Updated title for account\",\n    \"balance\": 2500.58,\n    \"updated\": 1578508024068,\n    \"created\": 1578508020658\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Account transactions",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a1199ab9-5571-44e1-9c15-033fcba45461",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account secondary\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/account/{{aId}}/transaction",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "account",
+            "{{aId}}",
+            "transaction"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Account transactions",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"customerId\": {{cId}},\n\t\"title\": \"Savings account secondary\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/account/{{aId}}/transaction",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "{{aId}}",
+                "transaction"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:27:54 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Transaction new\",\n        \"amount\": 14.36,\n        \"senderAccountId\": 6,\n        \"receiverAccountId\": 5,\n        \"updated\": 1578508064159,\n        \"created\": 1578508064159\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Transaction new\",\n        \"amount\": 14.36,\n        \"senderAccountId\": 6,\n        \"receiverAccountId\": 5,\n        \"updated\": 1578508065419,\n        \"created\": 1578508065419\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Transaction new\",\n        \"amount\": 14.36,\n        \"senderAccountId\": 6,\n        \"receiverAccountId\": 5,\n        \"updated\": 1578508066134,\n        \"created\": 1578508066134\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get all transactions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/transaction",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "transaction"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get all transactions",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/transaction",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "transaction"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:27:51 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Transaction new\",\n        \"amount\": 14.36,\n        \"senderAccountId\": 6,\n        \"receiverAccountId\": 5,\n        \"updated\": 1578508064159,\n        \"created\": 1578508064159\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Transaction new\",\n        \"amount\": 14.36,\n        \"senderAccountId\": 6,\n        \"receiverAccountId\": 5,\n        \"updated\": 1578508065419,\n        \"created\": 1578508065419\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Transaction new\",\n        \"amount\": 14.36,\n        \"senderAccountId\": 6,\n        \"receiverAccountId\": 5,\n        \"updated\": 1578508066134,\n        \"created\": 1578508066134\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Create a new transaction",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "82d9be37-f6e0-499a-ba51-c4e5b5fce712",
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "pm.environment.set(\"tId\", jsonData.id);"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "2edc23d0-7872-4d3e-892c-b5778756165d",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"title\": \"Transaction new\",\n\t\"amount\": 14.36,\n\t\"senderAccountId\": {{aId}},\n\t\"receiverAccountId\": {{aId2}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/transaction",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "transaction"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Create a new transaction",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"title\": \"Transaction new\",\n\t\"amount\": 14.36,\n\t\"senderAccountId\": {{aId}},\n\t\"receiverAccountId\": {{aId2}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/transaction",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "transaction"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:27:46 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 3,\n    \"title\": \"Transaction new\",\n    \"amount\": 14.36,\n    \"senderAccountId\": 6,\n    \"receiverAccountId\": 5,\n    \"updated\": 1578508066134,\n    \"created\": 1578508066134\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get transaction by id",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f2b173e9-998a-4b59-acc0-8807ce4dc3f4",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/transaction/{{tId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "transaction",
+            "{{tId}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get transaction by id",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/transaction/{{tId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "transaction",
+                "{{tId}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 08 Jan 2020 18:27:48 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Jetty(9.4.z-SNAPSHOT)"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 3,\n    \"title\": \"Transaction new\",\n    \"amount\": 14.36,\n    \"senderAccountId\": 6,\n    \"receiverAccountId\": 5,\n    \"updated\": 1578508066134,\n    \"created\": 1578508066134\n}"
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "f462e0c8-bc21-47ba-b63d-1894b930373b",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "9ab9e207-1179-43bd-b471-f93dd0df4941",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "5f4ff830-c1bb-4369-8d20-8029931f70d1",
+      "key": "base_url",
+      "value": "http://127.0.0.1:3000",
+      "type": "string"
+    },
+    {
+      "id": "71a30acc-2ac0-45be-ae62-9e5d5f12f124",
+      "key": "cId",
+      "value": "0",
+      "type": "string"
+    },
+    {
+      "id": "5754ddbc-e679-4c35-ba6a-80c3eb0425a6",
+      "key": "aId",
+      "value": "0",
+      "type": "string"
+    },
+    {
+      "id": "5462fe5d-f76a-47a8-8925-d6ee09730cc4",
+      "key": "aId2",
+      "value": "0",
+      "type": "string"
+    },
+    {
+      "id": "1edc340a-eed3-4ecb-86af-7b69a4e1ba15",
+      "key": "tId",
+      "value": "0",
+      "type": "string"
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
