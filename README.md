@@ -52,7 +52,7 @@ Default application port: 3000. Can be overridden with system property ```sparkP
 
 #### Run standalone Jar (with dependencies)
 
-**JRE (min 8 version) is required.** 
+**JRE (version 8 or later) is required.** 
 
 Run application with default port 3000
 ```
