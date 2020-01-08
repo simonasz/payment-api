@@ -48,7 +48,7 @@ No ORM was used to keep application simple.
 
 ## Run 
 
-Default application port: 3000. Can be overridden with environment variable ```sparkPort```
+Default application port: 3000. Can be overridden with system property ```sparkPort```
 
 #### Run standalone Jar (with dependencies)
 
