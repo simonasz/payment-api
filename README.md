@@ -7,7 +7,7 @@ Sample Payment API application based on REST specifications.
     - [Language](#language)
     - [Framework and tools](#framework-and-tools)
     - [Database](#database)
-    
+    - [Lombok for IDE](#lombok-enablement-for-ide)
 * [Run](#run)
     - [Run standalone Jar](#run-standalone-jar-with-dependencies)
     - [Run with Gradle](#run-with-gradle)
@@ -36,6 +36,7 @@ Gradle (build tool)
 
 JUnit, Mockito, Powermockito (for testing)
 
+Lombok (for annotations)
 
 ### Database
 Application uses in memory H2 database. No configuration required.
@@ -45,6 +46,12 @@ No ORM was used to keep application simple.
 ### Multi-threading and thread safety
 
 [Transaction](#transaction) creation operation is thread safe, because it depends on sender [Account](#account) state (balance property) and updated both sender [Account](#account) and receiver [Account](#account).  
+
+### Lombok enablement for IDE
+
+Lombok is used for annotation support - generate getter, setter, constructors via annotations.
+
+In case Lombok support in not enabled in IDE, see how to enable annotation processing for IDE (Intellij or Eclipse) [here](https://www.baeldung.com/lombok-ide)
 
 ## Run 
 
