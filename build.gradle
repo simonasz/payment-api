@@ -7,6 +7,7 @@ group 'simonas'
 version '0.0.1'
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 mainClassName = "app.Application"
 
@@ -30,7 +31,7 @@ sourceSets {
 }
 
 dependencies {
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version:'1.18.10'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version:'2.5.1'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.5.1'
     compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
@@ -55,13 +56,19 @@ jar {
     }
 }
 
+task copyFatJar(type: Copy) {
+    from "$buildDir/libs/"
+    include "*.jar"
+    into "$projectDir/"
+}
+
 task fatJar(type: Jar, description: 'Create Jar with dependencies', group: 'distribution') {
     manifest.from jar.manifest
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    libsDirName = "$projectDir/"
     with jar
+    finalizedBy copyFatJar
 }
 
 run {
